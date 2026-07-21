@@ -7,9 +7,11 @@ const port = 3000
 require('dotenv').config()
 require('./config/db')
 // import des routes
-const productsRoutes = require('./routes/products')
+const productsRoutes = require('./routes/productsRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 app.use(express.json())
+app.use('/api/v1/auth', authRoutes)
 
 // Monte le routeur sur le chemin de base
 app.use('/api/v1/products', productsRoutes)
