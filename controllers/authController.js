@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
+const validator = require('validator')
 
 const JWT_SECRET = process.env.JWT_SECRET
 const JWT_EXPIRES_IN = '364d'
@@ -20,6 +21,25 @@ const register = async (req, res) => {
 
         if (!name || !email || !password) {
             return res.status(400).json({ message: 'Please provide name, email and password' })
+        }
+
+        const isPasswordOK = validator.isStrongPassword(password, {
+            minLength: 6,
+            minLowercase: 1,
+            minUppercase: 1,
+            minNumbers: 1,
+            minSymbols: 1
+        }) // Return soit true soit false
+
+        if(!isPasswordOK){
+            return res.status(400).json({message: 'Password must have 1 lower, 1 upper, 1 number and 1 symbol and must be at least 6 caracters long'})
+        }
+
+        // Verifier si c'est un mail
+        const isEmailOK = validator.isEmail(email)
+
+        if(!isMailOK){
+            return res.status(400).json({message: 'You must provide a valid email'})
         }
 
         //check if user already exists

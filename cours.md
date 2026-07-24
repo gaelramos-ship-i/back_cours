@@ -248,3 +248,21 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 ```
+
+### Helmet 
+Permet de définir différent headers, permet de configurer et de masquer des informations a certain attaquant et se protéger des attaque XSS. 
+
+`npm i helmet`
+
+### Express rate limit 
+Middleware qui permet de limiter le nb d'appel a votre api par minute par ip. Eviter les attaques par brute forte.
+
+`npm i express-rate-limit`
+
+### Validator 
+
+Permet de valider l'email et le mdp, pour éviter les regex
+
+`npm i validator`
+
+On s'en sert : `authController`
