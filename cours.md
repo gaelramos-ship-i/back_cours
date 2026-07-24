@@ -227,3 +227,24 @@ Les jetons d'authetification (token) peuvent être encodés avec une durée spé
 ```bash
 npm install bcryptjs jsonwebtoken
 ```
+
+### CORS (Cross origin ressource sharing)
+
+* Autoriser ou non l'acces au ressource depuis un endroit précis.
+* Serveur distant avec des cors non autorisé, bloque l'accés.
+* On peux definir differente adresses autorisées 
+
+`npm install cors`
+
+`app.js`: 
+```javascript
+const cors = require('cors')
+
+// Si on ne met pas de paramètre on autorise TOUS les accès
+// On peut configurer des options pour autoriser certaines ressources 
+const corsOptions = {
+    // On utilise un [] pour autoriser plusieur acces 
+    origin: 'http://localhost:3000'
+}
+app.use(cors(corsOptions))
+```
