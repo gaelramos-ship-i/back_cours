@@ -15,7 +15,7 @@ const startServer = async () => {
     await connectDB()
 
     //Créer les tables si elles n'existent pas
-    await sequelize.sync({ alter: false })
+    // await sequelize.sync({ alter: false })
     console.log('Tables synchronized')
 }
 
